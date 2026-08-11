@@ -73,8 +73,6 @@ claude mcp get chrome
 
 Use `/mcp` inside Claude Code to inspect the server. Replace `--scope user` with `--scope local` to keep the registration local to the current project. See the [official Claude Code MCP documentation](https://code.claude.com/docs/en/mcp).
 
-For a project-scoped JSON configuration, copy [.mcp.json.example](.mcp.json.example) to `.mcp.json`, replace every placeholder with an absolute path, then explicitly approve the server when Claude Code asks. `.mcp.json` is ignored by Git because local absolute paths should not be published.
-
 ## Ask the AI to use Chrome
 
 After the server appears as connected in `/mcp`, describe the browser task to Codex or Claude Code in natural language. Mention `chrome MCP` when you specifically want this server rather than another browser integration. The AI receives Chrome MCP's built-in lifecycle instructions and decides whether to create, reconnect to, or reuse a browser profile before operating the page.

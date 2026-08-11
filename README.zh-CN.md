@@ -61,8 +61,6 @@ claude mcp get chrome
 
 在 Claude Code 中输入 `/mcp` 可以查看服务状态。如只希望在当前项目启用，将 `--scope user` 改为 `--scope local`。配置语法参考 [Claude Code 官方 MCP 文档](https://code.claude.com/docs/en/mcp)。
 
-如需项目级 JSON 配置，可将 [.mcp.json.example](.mcp.json.example) 复制为 `.mcp.json`，把占位路径替换为绝对路径，并在 Claude Code 首次加载时确认授权。本地 `.mcp.json` 含机器相关绝对路径，因此已加入 `.gitignore`。
-
 ## 让 AI 使用 Chrome
 
 在 `/mcp` 中确认服务已经连接后，直接用自然语言向 Codex 或 Claude Code 描述浏览器任务即可。如果同时安装了其他浏览器工具，可以在要求中明确写出“使用 chrome MCP”。AI 会读取 Chrome MCP 内置的生命周期指令，自行判断应该创建、连接还是复用浏览器配置，然后完成页面操作。
