@@ -4,6 +4,8 @@
 
 Chrome MCP 是一个本地 Model Context Protocol 服务，用于管理可持久化、多配置目录的 Chrome，并通过 Puppeteer 提供页面导航、标签页管理、元素交互、JavaScript 执行和截图等能力。MCP 启动时不会自动启动 Chrome；浏览器由生命周期工具按需启动或连接，多个 MCP 客户端可以共享同一个 Chrome 进程和登录状态。
 
+![Chrome MCP 通过持久化浏览器配置访问 Google](docs/images/chrome-mcp-google.png)
+
 ## 环境要求
 
 - amd64 架构的 Debian 或 Ubuntu

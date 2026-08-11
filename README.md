@@ -6,6 +6,8 @@ Chrome MCP is a local Model Context Protocol server for persistent, multi-profil
 
 Chrome is started only when a browser lifecycle tool is called. Multiple MCP clients can connect to the same running Chrome process without creating duplicate browsers.
 
+![Chrome MCP controlling Google through a persistent browser profile](docs/images/chrome-mcp-google.png)
+
 ## Platform requirements
 
 - Debian or Ubuntu on amd64
