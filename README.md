@@ -17,7 +17,7 @@ The installer adds Google Chrome, Node.js 22 when the installed Node.js is too o
 ## Install the runtime
 
 ```bash
-git clone https://github.com/YOUR_ACCOUNT/chrome-mcp.git
+git clone https://github.com/wzxklm/chrome-mcp.git
 cd chrome-mcp
 ./setup-chrome-mcp.sh
 ```

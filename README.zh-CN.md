@@ -15,7 +15,7 @@ Chrome MCP 是一个本地 Model Context Protocol 服务，用于管理可持久
 ## 安装运行环境
 
 ```bash
-git clone https://github.com/YOUR_ACCOUNT/chrome-mcp.git
+git clone https://github.com/wzxklm/chrome-mcp.git
 cd chrome-mcp
 ./setup-chrome-mcp.sh
 ```
