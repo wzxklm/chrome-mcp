@@ -63,16 +63,30 @@ claude mcp get chrome
 
 如需项目级 JSON 配置，可将 [.mcp.json.example](.mcp.json.example) 复制为 `.mcp.json`，把占位路径替换为绝对路径，并在 Claude Code 首次加载时确认授权。本地 `.mcp.json` 含机器相关绝对路径，因此已加入 `.gitignore`。
 
-## 首次使用
+## 让 AI 使用 Chrome
 
-1. 先调用 `puppeteer_list_browser_profiles`。
-2. 配置目录存在且 Chrome 正在运行时，调用 `puppeteer_connect_browser`。
-3. 配置目录存在但 Chrome 已停止时，调用 `puppeteer_launch_browser`，并设置 `profileAction: "reuse"`。
-4. 配置目录不存在时，调用 `puppeteer_launch_browser`，并设置 `profileAction: "create"`。
-5. 浏览器配置变为活动状态后，再使用页面工具。
-6. `puppeteer_disconnect_browser` 只断开 MCP，Chrome 会继续运行；`puppeteer_close_browser` 会关闭共享的 Chrome 进程。
+在 `/mcp` 中确认服务已经连接后，直接用自然语言向 Codex 或 Claude Code 描述浏览器任务即可。如果同时安装了其他浏览器工具，可以在要求中明确写出“使用 chrome MCP”。AI 会读取 Chrome MCP 内置的生命周期指令，自行判断应该创建、连接还是复用浏览器配置，然后完成页面操作。
 
-`deleteProfile: true` 会永久删除整个浏览器配置目录。只有 Chrome MCP 已写入并验证所有权标记时才允许删除。
+例如：
+
+```text
+请使用 chrome MCP 的 default 浏览器配置打开 example.com，阅读页面并总结
+主要内容。完成后保持浏览器运行。
+```
+
+```text
+请使用 chrome MCP 创建或复用名为 research 的独立浏览器配置，搜索这个
+API 的官方文档，并把当前可用选项整理成表格。
+```
+
+```text
+请重新连接 chrome MCP 的 default 配置，继续处理当前已经打开的标签页。
+任务完成后不要关闭浏览器。
+```
+
+浏览器配置会持久保存 Cookie 和登录状态。网站需要登录时，可以先让 AI 用指定配置打开登录页，通过可选的 noVNC 界面完成人工登录，再让 AI 继续任务。需要关闭 Chrome 时应在要求中明确说明；没有明确要求关闭时，可以保留现有浏览器会话供后续任务继续使用。
+
+删除浏览器配置会永久移除其中的所有浏览器数据，只有确实需要删除时才应明确要求 AI 执行。
 
 ## 配置项
 

@@ -75,18 +75,30 @@ Use `/mcp` inside Claude Code to inspect the server. Replace `--scope user` with
 
 For a project-scoped JSON configuration, copy [.mcp.json.example](.mcp.json.example) to `.mcp.json`, replace every placeholder with an absolute path, then explicitly approve the server when Claude Code asks. `.mcp.json` is ignored by Git because local absolute paths should not be published.
 
-## First browser session
+## Ask the AI to use Chrome
 
-Ask the MCP client to perform these steps, or call the tools directly:
+After the server appears as connected in `/mcp`, describe the browser task to Codex or Claude Code in natural language. Mention `chrome MCP` when you specifically want this server rather than another browser integration. The AI receives Chrome MCP's built-in lifecycle instructions and decides whether to create, reconnect to, or reuse a browser profile before operating the page.
 
-1. Call `puppeteer_list_browser_profiles`.
-2. If a profile exists and is running, call `puppeteer_connect_browser`.
-3. If it exists but is stopped, call `puppeteer_launch_browser` with `profileAction: "reuse"`.
-4. If it does not exist, call `puppeteer_launch_browser` with `profileAction: "create"`.
-5. Use the page tools after the profile becomes active.
-6. Use `puppeteer_disconnect_browser` to leave Chrome running, or `puppeteer_close_browser` to stop it.
+Examples:
 
-Setting `deleteProfile: true` permanently removes that profile's browser data. Chrome MCP permits deletion only after it has written and validated its ownership marker.
+```text
+Use chrome MCP with the default browser profile. Open example.com, inspect the
+page, and summarize the main content. Keep the browser running afterward.
+```
+
+```text
+Use chrome MCP with a separate profile named research. Search for the official
+documentation for this API and compare the current options in a table.
+```
+
+```text
+Reconnect to the default chrome MCP profile and continue working in the tabs
+that are already open. Do not close the browser when finished.
+```
+
+Browser profiles persist cookies and login sessions. For a site that needs authentication, ask the AI to open the login page in a named profile, complete any interactive login through the optional noVNC view, then ask the AI to continue. Say explicitly when the AI should close Chrome; leaving it unspecified allows the existing browser session to remain available for later tasks.
+
+Deleting a browser profile permanently removes its browser data. Request profile deletion only when that is your explicit intent.
 
 ## Configuration
 
