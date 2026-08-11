@@ -1,0 +1,15 @@
+[Unit]
+Description=VNC bridge for Chrome MCP X display
+Requires=chrome-xvfb.service
+After=chrome-xvfb.service
+PartOf=chrome-xvfb.service
+
+[Service]
+Type=simple
+Environment=DISPLAY=:99
+ExecStart=/usr/bin/x11vnc -display :99 -rfbauth /etc/chrome-mcp/x11vnc.pass -no6 -noipv6 -listen 127.0.0.1 -rfbport 5900 -rfbportv6 0 -forever -shared -noxdamage -repeat
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

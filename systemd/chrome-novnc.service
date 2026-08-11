@@ -1,0 +1,14 @@
+[Unit]
+Description=noVNC web access for Chrome MCP
+Requires=chrome-x11vnc.service
+After=chrome-x11vnc.service
+PartOf=chrome-x11vnc.service
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/websockify --web /usr/share/novnc 127.0.0.1:6080 127.0.0.1:5900
+Restart=always
+RestartSec=2
+
+[Install]
+WantedBy=multi-user.target

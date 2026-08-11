@@ -1,0 +1,37 @@
+# Dependencies
+node_modules/
+
+# Local browser state (may contain cookies, sessions, and credentials)
+.chrome-profile/
+.chrome-profiles/
+chrome-profile/
+chrome-profiles/
+
+# Local MCP/client configuration
+.mcp.json
+.codex/
+.claude/
+
+# Environment and secret files
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+*.pass
+
+# Logs, reports, and temporary output
+*.log
+coverage/
+test-results/
+tmp/
+.tmp/
+
+# Editor and OS metadata
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*~
